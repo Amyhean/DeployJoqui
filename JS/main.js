@@ -17,13 +17,13 @@ navbar.insertAdjacentHTML("beforeend",
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../simbolos.html">Simbolos</a></li>
                             <li><a class="dropdown-item" href="../comision.html">Maestros y Comisión</a></li>
-                            <li><a class="dropdown-item" href="#">Invitanos un cafe</a></li>
-                            <li><a class="dropdown-item" href="#">Proceso constructivo</a></li>
+                            <li><a class="dropdown-item" href="../invitanos.html">Invitanos un cafe</a></li>
+                            
                             
                         </ul>
                     </li>
                     <li class="nav-item">
-                      <a class="gg" href="../producjoqui.html">Testimonios</a>
+                      <a class="gg" href="../producjoqui.html">Producciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="gg" href="../testimonios.html">Testimonios</a>
@@ -34,8 +34,8 @@ navbar.insertAdjacentHTML("beforeend",
                     <li class="nav-item dropdown">
                     <a class="gg dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" href="#">Actividades</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Actividades Próximas</a></li>
-                        <li><a class="dropdown-item" href="../actividadesr.html">Actividades Recientes</a></li>
+                        <li><a class="dropdown-item" href="../aproximas.html">Actividades Próximas</a></li>
+                        <li><a class="dropdown-item" href="../actividadesr.html">Actividades Anteriores</a></li>
                     </ul>
                     <li class="nav-item">
                         <a class="gg" href="../contactanos.html">Contáctanos</a>
