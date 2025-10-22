@@ -22,43 +22,57 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col-md-12">
                 <div class="card mb-3" style="border: none;">
-                    <iframe
-                        src="https://player.cloudinary.com/embed/?cloud_name=dbdnogkyc&public_id=WhatsApp_Video_2025-08-25_at_11.54.51_AM_eqmxjz&profile=cld-default"
-                        width="640" height="360" style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
-                        allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
-                    
-                    <!--<img src="./SRC/img/jornadaporlanoviolencia.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h1 class="card-title">Jornada por la no violencia y la reconciliación</h1>
-                                            <h6 class="card-title">Cuando: <small class="text-muted">15 de Diciembre a las 11:00 a.m.</small></h6>
-                                            <p class="card-text">Los cambios de estación han sido, desde siempre, hitos significativos en las culturas
-                                                de todo el mundo. Representan
-                                                momentos de renovación, renacimiento y transición. Nos invitan a reflexionar sobre lo vivido, proyectar
-                                                el futuro y
-                                                celebrar en comunidad, marcando también ciclos fundamentales para la agricultura y las tradiciones
-                                                sociales y
-                                                religiosas.</p>
-                                            <p>En nuestro parque, cada cambio estacional es una oportunidad única para reunirnos, reflexionar y
-                                                fortalecer los lazos
-                                                con nuestros seres queridos. Es un momento para renovar deseos, planificar, y, sobre todo, caminar
-                                                juntos hacia una vida
-                                                más plena y hacia la humanización de la Tierra.</p>
-                                            <p>Este invierno celebramos el cierre de un año lleno de intentos y aprendizajes, destacando el valor del
-                                                esfuerzo
-                                                continuo. Entre nuestras actividades, compartiremos un espacio de reflexión con el abogado Federico
-                                                Anaya sobre la
-                                                realidad político-social de nuestro país. También viviremos un ritual de sanación espiritual dirigido
-                                                por amigos de
-                                                Malinalco, disfrutaremos la música de Francisco de la O y su jarana, y culminaremos la 3ra. Marcha
-                                                Mundial por la Paz y
-                                                la Noviolencia.</p>
-                                            <p>Además, <b>romperemos piñatas, jugaremos con los niños de la comunidad, y en un acto simbólico,
-                                                    quemaremos nuestros deseos
-                                                    para que el viento los eleve, impregnados de nuestras intenciones de hacerlos realidad.</b>
-                                                Finalmente, compartiremos juntos
-                                                una comida comunitaria, celebrando la unidad y la esperanza que nos une.</p>
-                                
-                                        </div>-->
+                  <section id="facebook-feed" class="container my-5">
+                    <h2 class="text-center mb-4 fw-bold" style="color:#2d2d2d;">
+                        🌟 Entérate de lo último | Próximas actividades y novedades 🌿
+                    </h2>
+                
+                    <div id="facebook-posts" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center text-center">
+                        <p>Cargando publicaciones...</p>
+                    </div>
+                </section>
+                
+                <script>
+                    const pageId = '1955422051387027';
+                    const accessToken = 'EAA0vuswicl0BPwYZAIqXZC2BpCo9VpXKzCBxynOWZCnZBeDwxjGFZArUGNem5NA9k5uPiduMoRuXI5HKoZBqD1SAtZBJiZAbcI9wAWZAnKpQ52H9WTRSF5rnkwFPXoMSKdZCjZCYpEoZBiMwYlwVF5xWPH0SUDfiTGwbGVzndauWDSGOZA2m0sZAIx9VvTC59r0QwTwQUIW9XLHOxs'; // pega tu token aquí
+
+                    fetch(`https://graph.facebook.com/${pageId}/posts?fields=message,permalink_url,full_picture,created_time&access_token=${accessToken}&limit=3`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const posts = data.data;
+                            let html = '';
+
+                            posts.forEach(post => {
+                                html += `
+                        <div class="col">
+                          <div class="card h-100 shadow-sm border-0">
+                            ${post.full_picture ? `<img src="${post.full_picture}" class="card-img-top" alt="Publicación de Facebook">` : ''}
+                            <div class="card-body">
+                              <p class="card-text">${post.message ? post.message.substring(0, 150) + '...' : '(Sin texto)'}</p>
+                              <a href="${post.permalink_url}" target="_blank" class="btn btn-primary">Ver en Facebook</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                              ${new Date(post.created_time).toLocaleDateString('es-MX', {
+                                    year: 'numeric', month: 'long', day: 'numeric'
+                                })}
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                            });
+
+                            document.getElementById('facebook-posts').innerHTML = html;
+                        })
+                        .catch(error => {
+                            console.error('Error al cargar publicaciones:', error);
+                            document.getElementById('facebook-posts').innerHTML = `
+                      <p class="text-danger">No se pudieron cargar las publicaciones en este momento.</p>
+                    `;
+                        });
+                </script>
+
+
+
                 </div>
             </div>
         </div>
