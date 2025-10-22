@@ -29,7 +29,7 @@ navbar.insertAdjacentHTML("beforeend",
                       <a class="gg" href="../producjoqui.html">Producciones</a>
                     </li>
                     <li class="nav-item">
-                      <a class="gg" href="../libros.html"> Libros sobre humanismo</a>
+                      <a class="gg" href="../libros.html"> Libros</a>
                     </li>
                     <li class="nav-item">
                         <a class="gg" href="../testimonios.html">Testimonios</a>
@@ -42,6 +42,9 @@ navbar.insertAdjacentHTML("beforeend",
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../aproximas.html">Actividades Próximas</a></li>
                         <li><a class="dropdown-item" href="../actividadesr.html">Actividades Anteriores</a></li>
+                        <li><a class="dropdown-item" href="../proceso.html">Procesos</a></li>
+                        <li><a class="dropdown-item" href="../taller.html">Taller de Fuego</a></li>
+
                     </ul>
                     <li class="nav-item">
                         <a class="gg" href="../contactanos.html">Contáctanos</a>
