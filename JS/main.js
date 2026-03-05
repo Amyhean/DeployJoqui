@@ -42,8 +42,8 @@ navbar.insertAdjacentHTML("beforeend",
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../aproximas.html">Actividades Próximas</a></li>
                         <li><a class="dropdown-item" href="../actividadesr.html">Actividades Anteriores</a></li>
-                        <li><a class="dropdown-item" href="../proceso.html">Procesos</a></li>
-                        <li><a class="dropdown-item" href="../taller.html">Taller de Fuego</a></li>
+                        <li><a class="dropdown-item" href="../proceso.html">Proceso</a></li>
+                        <li><a class="dropdown-item" href="../taller.html">Taller del Fuego</a></li>
 
                     </ul>
                     <li class="nav-item">
