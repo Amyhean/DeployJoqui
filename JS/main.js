@@ -26,6 +26,9 @@ navbar.insertAdjacentHTML("beforeend",
                       <a class="gg" href="../instalaciones.html">Instalaciones</a>
                     </li>
                     <li class="nav-item">
+                      <a class="gg" href="../producjoqui.html">Producciones</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="gg" href="../libros.html"> Libros sobre Humanismo</a>
                     </li>
                     <li class="nav-item">
