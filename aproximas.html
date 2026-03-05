@@ -32,42 +32,55 @@
                     </div>
                 </section>
                 
+                
                 <script>
-                    const pageId = '1955422051387027';
-                    const accessToken = 'EAA0vuswicl0BPwYZAIqXZC2BpCo9VpXKzCBxynOWZCnZBeDwxjGFZArUGNem5NA9k5uPiduMoRuXI5HKoZBqD1SAtZBJiZAbcI9wAWZAnKpQ52H9WTRSF5rnkwFPXoMSKdZCjZCYpEoZBiMwYlwVF5xWPH0SUDfiTGwbGVzndauWDSGOZA2m0sZAIx9VvTC59r0QwTwQUIW9XLHOxs'; // pega tu token aquí
+                    const pageId = "1955422051387027";
+                    const accessToken = "EAA0vuswicl0BQ3yZCFesXere1ydrYzubJiFjyVuM1G5Ge4m66onWeAThoraddixzjjmYZAOIsY5FsIltZCZA9kZCd1BxZAC4i9MQzmDzYPaEBJou7CgZCnA8aiaECZBlij29o4FvLwF52wAkqgXzV2CSJiZAYJsNSZCSomFARiJNZAaYXcoAZBBMXbzBAFNwkKmqNFe2p9SWnojv1cDtIZAqDqHQ1ZAPrU0zlSzaBEuF6PHIAZD";
 
-                    fetch(`https://graph.facebook.com/${pageId}/posts?fields=message,permalink_url,full_picture,created_time&access_token=${accessToken}&limit=3`)
-                        .then(response => response.json())
-                        .then(data => {
+                    const url = `https://graph.facebook.com/v19.0/${pageId}/posts` +
+                        `?fields=message,permalink_url,full_picture,created_time` +
+                        `&limit=3&access_token=${encodeURIComponent(accessToken)}`;
+
+                    fetch(url)
+                        .then(async (res) => {
+                            const json = await res.json();
+                            if (!res.ok) {
+                                console.error("Facebook HTTP:", res.status, json);
+                                throw new Error(json?.error?.message || `HTTP ${res.status}`);
+                            }
+                            return json;
+                        })
+                        .then((data) => {
                             const posts = data.data;
-                            let html = '';
+                            if (!Array.isArray(posts)) {
+                                console.error("Respuesta inesperada:", data);
+                                throw new Error("No llegó data.data como arreglo");
+                            }
 
-                            posts.forEach(post => {
+                            let html = "";
+                            posts.forEach((post) => {
                                 html += `
-                        <div class="col">
-                          <div class="card h-100 shadow-sm border-0">
-                            ${post.full_picture ? `<img src="${post.full_picture}" class="card-img-top" alt="Publicación de Facebook">` : ''}
-                            <div class="card-body">
-                              <p class="card-text">${post.message ? post.message.substring(0, 150) + '...' : '(Sin texto)'}</p>
-                              <a href="${post.permalink_url}" target="_blank" class="btn btn-primary">Ver en Facebook</a>
-                            </div>
-                            <div class="card-footer text-muted">
-                              ${new Date(post.created_time).toLocaleDateString('es-MX', {
-                                    year: 'numeric', month: 'long', day: 'numeric'
-                                })}
+                          <div class="col">
+                            <div class="card h-100 shadow-sm border-0">
+                              ${post.full_picture ? `<img src="${post.full_picture}" class="card-img-top" alt="Publicación de Facebook">` : ''}
+                              <div class="card-body">
+                                <p class="card-text">${post.message ? post.message.substring(0, 150) + '...' : '(Sin texto)'}</p>
+                                <a href="${post.permalink_url}" target="_blank" class="btn btn-primary">Ver en Facebook</a>
+                              </div>
+                              <div class="card-footer text-muted">
+                                ${new Date(post.created_time).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      `;
+                        `;
                             });
 
-                            document.getElementById('facebook-posts').innerHTML = html;
+                            document.getElementById('facebook-posts').innerHTML = html || `<p>No hay publicaciones para mostrar.</p>`;
                         })
-                        .catch(error => {
-                            console.error('Error al cargar publicaciones:', error);
-                            document.getElementById('facebook-posts').innerHTML = `
-                      <p class="text-danger">No se pudieron cargar las publicaciones en este momento.</p>
-                    `;
+                        .catch((err) => {
+                            console.error("Error al cargar publicaciones:", err);
+                            document.getElementById('facebook-posts').innerHTML =
+                                `<p class="text-danger">No se pudieron cargar las publicaciones en este momento.</p>`;
                         });
                 </script>
 
