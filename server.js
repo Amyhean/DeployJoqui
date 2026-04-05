@@ -14,7 +14,7 @@ app.use(cors());
 
 app.get("/api/facebook-posts", async (req, res) => {
   try {
-    const url = `https://graph.facebook.com/v25.0/${PAGE_ID}/posts?fields=message,permalink_url,full_picture,created_time&limit=6&access_token=${encodeURIComponent(ACCESS_TOKEN)}`;
+    const url = `fetch("https://joqui-facebook-api.onrender.com/api/facebook-posts")`;
 
     const fbResponse = await fetch(url);
     const data = await fbResponse.json();
