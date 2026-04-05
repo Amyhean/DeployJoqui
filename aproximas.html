@@ -1,108 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./SRC/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/cards.css">
-    <link rel="stylesheet" href="./CSS/whats.css">
-    <link rel="stylesheet" href="./CSS/actr.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Actividades Proximas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actividades Próximas</title>
+
+  <link rel="shortcut icon" href="./SRC/img/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./CSS/style.css" />
+  <link rel="stylesheet" href="./CSS/cards.css" />
+  <link rel="stylesheet" href="./CSS/whats.css" />
+  <link rel="stylesheet" href="./CSS/actr.css" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    #facebook-feed {
+      padding: 40px 0;
+    }
+
+    #facebook-feed .section-title {
+      text-align: center;
+      font-weight: 800;
+      color: #2d2d2d;
+      margin-bottom: 32px;
+      font-size: 2.2rem;
+    }
+
+    #facebook-posts .card {
+      border: none;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+    }
+
+    #facebook-posts .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    #facebook-posts .card-img-top {
+      height: 240px;
+      object-fit: cover;
+      background: #f3f3f3;
+    }
+
+    #facebook-posts .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #facebook-posts .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    #facebook-posts .card-text {
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      white-space: pre-line;
+    }
+
+    #facebook-posts .btn-facebook {
+      margin-top: auto;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      text-align: center;
+    }
+
+    #facebook-posts .btn-facebook:hover {
+      background-color: #0f5ec9;
+      color: white;
+    }
+
+    #facebook-posts .card-footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .facebook-loading,
+    .facebook-error,
+    .facebook-empty {
+      text-align: center;
+      font-size: 1rem;
+      padding: 20px;
+      color: #666;
+    }
+
+    .facebook-error {
+      color: #b02a37;
+    }
+
+    @media (max-width: 768px) {
+      #facebook-feed .section-title {
+        font-size: 1.5rem;
+      }
+
+      #facebook-posts .card-img-top {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!--Navbar-->
-    <header id="navbar"></header>
+  <header id="navbar"></header>
 
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col-md-12">
-                <div class="card mb-3" style="border: none;">
-                  <section id="facebook-feed" class="container my-5">
-                    <h2 class="text-center mb-4 fw-bold" style="color:#2d2d2d;">
-                        🌟 Entérate de lo último | Próximas actividades y novedades 🌿
-                    </h2>
-                
-                    <div id="facebook-posts" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center text-center">
-                        <p>Cargando publicaciones...</p>
-                    </div>
-                </section>
-                
-                
-                <script>
-                    const pageId = "1955422051387027";
-                    const accessToken = "EAA0vuswicl0BQ3yZCFesXere1ydrYzubJiFjyVuM1G5Ge4m66onWeAThoraddixzjjmYZAOIsY5FsIltZCZA9kZCd1BxZAC4i9MQzmDzYPaEBJou7CgZCnA8aiaECZBlij29o4FvLwF52wAkqgXzV2CSJiZAYJsNSZCSomFARiJNZAaYXcoAZBBMXbzBAFNwkKmqNFe2p9SWnojv1cDtIZAqDqHQ1ZAPrU0zlSzaBEuF6PHIAZD";
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <section id="facebook-feed" class="container my-5">
+          <h2 class="section-title">
+            🌟 Entérate de lo último | Próximas actividades y novedades 🌿
+          </h2>
 
-                    const url = `https://graph.facebook.com/v19.0/${pageId}/posts` +
-                        `?fields=message,permalink_url,full_picture,created_time` +
-                        `&limit=3&access_token=${encodeURIComponent(accessToken)}`;
-
-                    fetch(url)
-                        .then(async (res) => {
-                            const json = await res.json();
-                            if (!res.ok) {
-                                console.error("Facebook HTTP:", res.status, json);
-                                throw new Error(json?.error?.message || `HTTP ${res.status}`);
-                            }
-                            return json;
-                        })
-                        .then((data) => {
-                            const posts = data.data;
-                            if (!Array.isArray(posts)) {
-                                console.error("Respuesta inesperada:", data);
-                                throw new Error("No llegó data.data como arreglo");
-                            }
-
-                            let html = "";
-                            posts.forEach((post) => {
-                                html += `
-                          <div class="col">
-                            <div class="card h-100 shadow-sm border-0">
-                              ${post.full_picture ? `<img src="${post.full_picture}" class="card-img-top" alt="Publicación de Facebook">` : ''}
-                              <div class="card-body">
-                                <p class="card-text">${post.message ? post.message.substring(0, 150) + '...' : '(Sin texto)'}</p>
-                                <a href="${post.permalink_url}" target="_blank" class="btn btn-primary">Ver en Facebook</a>
-                              </div>
-                              <div class="card-footer text-muted">
-                                ${new Date(post.created_time).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}
-                              </div>
-                            </div>
-                          </div>
-                        `;
-                            });
-
-                            document.getElementById('facebook-posts').innerHTML = html || `<p>No hay publicaciones para mostrar.</p>`;
-                        })
-                        .catch((err) => {
-                            console.error("Error al cargar publicaciones:", err);
-                            document.getElementById('facebook-posts').innerHTML =
-                                `<p class="text-danger">No se pudieron cargar las publicaciones en este momento.</p>`;
-                        });
-                </script>
-
-
-
-                </div>
+          <div id="facebook-posts" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col-12">
+              <p class="facebook-loading">Cargando publicaciones...</p>
             </div>
-        </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </div>
 
+  <div class="right">
+    <img
+      class="btn-whatsapp"
+      src="https://clientes.dongee.com/whatsapp.png"
+      width="64"
+      height="64"
+      alt="Whatsapp"
+      onclick="window.location.href='https://wa.me/+525524105619?text=Hola!%20Estoy%20interesado%20en%20asistir%20al%20parque'"
+    />
+  </div>
 
+  <div id="footer"></div>
 
-    <div class="right">
-        <img class="btn-whatsapp" src="https://clientes.dongee.com/whatsapp.png" width="64" height="64" alt="Whatsapp"
-            onclick="window.location.href='https://wa.me/+525524105619?text=Hola!%20Estoy%20interesado%20en%20asistir%20al%20parque'" />
-    </div>
-    <div id="footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-    <script src="./JS/main.js"></script>
-    <script src="./JS/footer.js"></script>
+  <script>
+    function formatearFecha(fechaIso) {
+      try {
+        return new Date(fechaIso).toLocaleDateString("es-MX", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+      } catch {
+        return "";
+      }
+    }
+
+    function escaparHtml(texto) {
+      const div = document.createElement("div");
+      div.textContent = texto || "";
+      return div.innerHTML;
+    }
+
+    async function cargarPublicacionesFacebook() {
+      const contenedor = document.getElementById("facebook-posts");
+
+      try {
+        const respuesta = await fetch("http://localhost:3000/api/facebook-posts");
+        const data = await respuesta.json();
+
+        if (!respuesta.ok) {
+          throw new Error(data.error || "No se pudieron obtener las publicaciones");
+        }
+
+        const posts = Array.isArray(data.data) ? data.data : [];
+
+        if (posts.length === 0) {
+          contenedor.innerHTML = `
+            <div class="col-12">
+              <p class="facebook-empty">No hay publicaciones disponibles en este momento.</p>
+            </div>
+          `;
+          return;
+        }
+
+        contenedor.innerHTML = posts.map((post) => {
+          const mensaje = post.message
+            ? escaparHtml(post.message.length > 180 ? post.message.slice(0, 180) + "..." : post.message)
+            : "Publicación sin texto.";
+
+          const imagen = post.full_picture
+            ? `<img src="${post.full_picture}" class="card-img-top" alt="Publicación de Facebook">`
+            : `<div class="card-img-top d-flex align-items-center justify-content-center">Sin imagen</div>`;
+
+          return `
+            <div class="col">
+              <div class="card">
+                ${imagen}
+                <div class="card-body">
+                  <h5 class="card-title">Publicación reciente</h5>
+                  <p class="card-text">${mensaje}</p>
+                  <a href="${post.permalink_url}" target="_blank" rel="noopener noreferrer" class="btn-facebook">
+                    Ver en Facebook
+                  </a>
+                </div>
+                <div class="card-footer">
+                  ${formatearFecha(post.created_time)}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      } catch (error) {
+        console.error("Error:", error);
+        contenedor.innerHTML = `
+          <div class="col-12">
+            <p class="facebook-error">No se pudieron cargar las publicaciones en este momento.</p>
+          </div>
+        `;
+      }
+    }
+
+    cargarPublicacionesFacebook();
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./JS/main.js"></script>
+  <script src="./JS/footer.js"></script>
 </body>
-
 </html>
