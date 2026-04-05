@@ -174,7 +174,7 @@
       const contenedor = document.getElementById("facebook-posts");
 
       try {
-        const respuesta = await fetch("http://localhost:3000/api/facebook-posts");
+        const respuesta = await fetch("https://joqui-facebook-api.onrender.com");
         const data = await respuesta.json();
 
         if (!respuesta.ok) {
