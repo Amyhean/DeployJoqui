@@ -31,7 +31,7 @@ navbar.insertAdjacentHTML("beforeend",
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/simbolos.html">Simbolos</a></li>
+                        <li><a class="dropdown-item" href="./simbolos.html">Simbolos</a></li>
                         <li><a class="dropdown-item" href="/comision.html">Maestros y Comisión</a></li>
                         <li><a class="dropdown-item" href="/invitanos.html">Invitanos un cafe</a></li>
                     </ul>
