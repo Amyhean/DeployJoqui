@@ -4,8 +4,8 @@ navbar.insertAdjacentHTML("beforeend",
 `<nav class="navbar navbar1 navbar-expand-lg">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="./index.html">
-            <img src="./SRC/img/1.png" alt="logo" width="200px" height="50px">
+        <a class="navbar-brand" href="index.html">
+            <img src="SRC/img/1.png" alt="logo" width="200px" height="50px">
         </a>
 
         <button class="navbar-toggler" type="button"
@@ -31,30 +31,30 @@ navbar.insertAdjacentHTML("beforeend",
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./simbolos.html">Simbolos</a></li>
-                        <li><a class="dropdown-item" href="./comision.html">Maestros y Comisión</a></li>
-                        <li><a class="dropdown-item" href="./invitanos.html">Invitanos un cafe</a></li>
+                        <li><a class="dropdown-item" href="/simbolos.html">Simbolos</a></li>
+                        <li><a class="dropdown-item" href="/comision.html">Maestros y Comisión</a></li>
+                        <li><a class="dropdown-item" href="/invitanos.html">Invitanos un cafe</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./instalaciones.html">Instalaciones</a>
+                    <a class="gg" href="/instalaciones.html">Instalaciones</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./producjoqui.html">Producciones</a>
+                    <a class="gg" href="/producjoqui.html">Producciones</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./libros.html">Libros sobre Humanismo</a>
+                    <a class="gg" href="/libros.html">Libros sobre Humanismo</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./testimonios.html">Testimonios</a>
+                    <a class="gg" href="/testimonios.html">Testimonios</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./silo.html">Silo</a>
+                    <a class="gg" href="/silo.html">Silo</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -67,15 +67,15 @@ navbar.insertAdjacentHTML("beforeend",
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./aproximas.html">Actividades Próximas</a></li>
-                        <li><a class="dropdown-item" href="./actividadesr.html">Actividades Anteriores</a></li>
-                        <li><a class="dropdown-item" href="./proceso.html">Proceso</a></li>
-                        <li><a class="dropdown-item" href="./taller.html">Taller del Fuego</a></li>
+                        <li><a class="dropdown-item" href="/aproximas.html">Actividades Próximas</a></li>
+                        <li><a class="dropdown-item" href="/actividadesr.html">Actividades Anteriores</a></li>
+                        <li><a class="dropdown-item" href="/proceso.html">Proceso</a></li>
+                        <li><a class="dropdown-item" href="/taller.html">Taller del Fuego</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="gg" href="./contactanos.html">Contáctanos</a>
+                    <a class="gg" href="/contactanos.html">Contáctanos</a>
                 </li>
 
             </ul>
